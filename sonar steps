@@ -1,0 +1,21 @@
+Sonarqube steps
+1. Download https://www.sonarqube.org/downloads/
+2. Start sonarqube.  sh sonar.sh start. (File path: inside bin folder)
+3. Open localhost:9090 password: admin admin
+4. Generate token
+5. Create a project
+6. In your android app
+    1. Project level grade. Add classpath "com.android.tools.build:gradle:7.0.2"
+    2. App level add - plugins {   id 'org.sonarqube' } 
+    3. App level add
+        1.  sonarqube {
+			    properties {
+			        property "sonar.host.url", "http://localhost:9000/"
+			        property "sonar.login", "2323c579a28593d7258f6f5664f3fe2a3547a64e"
+			        property "sonar.projectKey", "SonarQubeTest"
+  	 			     property "sonar.projectName", "SonarQubeTest"
+  				      property "sonar.sourceEncoding", "UTF-8"
+				        property "sonar.cfamily.cache.enabled", "true"
+ 		   }
+			}
+    4. Run  ./gradlew clean testDebugUnitTest sonarqube
